@@ -1,5 +1,9 @@
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(defun enable-haskell-mode ()
+  (subword-mode +1)
+  (turn-on-haskell-doc-mode)
+  (turn-on-haskell-indentation))
+
+(add-hook 'haskell-mode-hook 'enable-haskell-mode)
 
 (provide 'init-haskell-mode)
 
