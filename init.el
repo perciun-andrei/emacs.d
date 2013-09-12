@@ -8,6 +8,9 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(defun package-install-ifnot (package)
+  (when (not (package-installed-p package)) (package-install package)))
+
 ;; init-core
 (require 'init-core)
 
@@ -16,6 +19,9 @@
 
 ;; init-ui
 (require 'init-ui)
+
+;; init-themes
+(require 'init-themes)
 
 ;; Haskell mode
 (require 'init-haskell-mode)
