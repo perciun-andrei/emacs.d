@@ -4,7 +4,7 @@
 
 ;; setting the theme for window version
 (when window-system
-  (load-theme 'solarized-dar t))
+  (load-theme 'solarized-dark t))
 
 ;; setting the theme for terminal version
 (unless window-system
