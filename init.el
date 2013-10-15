@@ -1,6 +1,6 @@
 ;; define the root dir of configs
 (defvar root-dir (file-name-directory load-file-name) "The root dir of the Emacs configuration.")
-;; (defvar package-el-dir (expand-file-name "package" root-dir) "The location of package.el")
+(defvar packages-dir (expand-file-name "packages" root-dir) "The location of package.el")
 
 (add-to-list 'load-path root-dir)
 ;; (add-to-list 'load-path package-el-dir)
@@ -31,3 +31,7 @@
 
 ;; Haskell mode
 (require 'init-haskell-mode)
+
+(defvar sr-speedbar-dir (expand-file-name "sr-speedbar-0.1.9" packages-dir))
+(add-to-list 'load-path sr-speedbar-dir)
+(require 'sr-speedbar)

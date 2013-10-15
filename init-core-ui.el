@@ -23,6 +23,7 @@
 (column-number-mode t)
 (size-indication-mode t)
 (global-linum-mode t)
+(setq linum-format "%4d ")
 
 ;; make the fringe (gutter) smaller
 ;; the argument is a width in pixels (the default is 8)
