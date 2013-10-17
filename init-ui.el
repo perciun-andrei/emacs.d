@@ -1,3 +1,7 @@
+;; Installing dependencies
+(package-install-ifnot 'ido-ubiquitous)
+(package-install-ifnot 'flx-ido)
+
 ;; Enabling ido-mode
 (require 'ido)
 (require 'ido-ubiquitous)
