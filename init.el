@@ -10,28 +10,27 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
+;; (package-refresh-contents)
 
 (defun package-install-ifnot (package)
   (when (not (package-installed-p package)) (package-install package)))
 
-;; init-core
-(require 'init-core)
+;; Disable creating '~' backup files
+(setq make-backup-files nil)
 
-;; init-core-ui
-(require 'init-core-ui)
-
-;; init-ui
+;; init ui
 (require 'init-ui)
 
-;; init-themes
+;; init themes
 (require 'init-themes)
 
-;; init-projectile
+;; init projectile
 (require 'init-projectile)
 
 ;; Haskell mode
 (require 'init-haskell-mode)
 
+;; Load speedbar from packages folder
 (defvar sr-speedbar-dir (expand-file-name "sr-speedbar-0.1.9" packages-dir))
 (add-to-list 'load-path sr-speedbar-dir)
 (require 'sr-speedbar)
