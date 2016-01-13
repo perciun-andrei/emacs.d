@@ -2,13 +2,15 @@
 (defvar root-dir (file-name-directory load-file-name) "The root dir of the Emacs configuration.")
 (defvar packages-dir (expand-file-name "packages" root-dir) "The location of package.el")
 
-(add-to-list 'load-path root-dir)
-;; (add-to-list 'load-path package-el-dir)
+(add-to-list 'load-path (expand-file-name "initialize-scripts" root-dir))
 
 ;; Adding marmalade packages
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 (package-initialize)
 ;; (package-refresh-contents)
 
@@ -24,13 +26,14 @@
 ;; init themes
 (require 'init-themes)
 
+;; init autocomplete
+(require 'init-auto-complete)
+
 ;; init projectile
 (require 'init-projectile)
 
-;; Haskell mode
-(require 'init-haskell-mode)
+;; init c/c++ project related modes
+(require 'init-c-projects)
 
-;; Load speedbar from packages folder
-(defvar sr-speedbar-dir (expand-file-name "sr-speedbar-0.1.9" packages-dir))
-(add-to-list 'load-path sr-speedbar-dir)
-(require 'sr-speedbar)
+;; Haskell mode
+;; (require 'init-haskell-mode)
