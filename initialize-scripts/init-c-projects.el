@@ -1,6 +1,7 @@
 ;; initialize c/c++ projects
 (package-install-ifnot 'cmake-mode)
 (package-install-ifnot 'cmake-font-lock)
+(package-install-ifnot 'irony)
 
 (setenv "LD_LIBRARY_PATH" "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib")
 
@@ -13,8 +14,7 @@
 	  (lambda ()
 	    (setq cmake-tab-width 4
 		  cmake-basic-offset 4)
-	    (setq-default indent-tabs-mode nil)
-	    ))
+	    (setq-default indent-tabs-mode nil)))
 
 ;; c formating stuff
 (defun my-c-mode-hook ()
@@ -32,7 +32,7 @@
   (define-key irony-mode-map [remap completion-at-point]
     'irony-completion-at-point-async)
   (define-key irony-mode-map [remap complete-symbol]
-        'irony-completion-at-point-async))
+    'irony-completion-at-point-async))
 
 (add-hook 'irony-mode-hook 'my:irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
