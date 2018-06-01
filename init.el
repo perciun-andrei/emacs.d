@@ -6,13 +6,14 @@
 
 ;; Adding marmalade packages
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
-;; (package-refresh-contents)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (defun package-install-ifnot (package)
   (when (not (package-installed-p package)) (package-install package)))
@@ -37,3 +38,17 @@
 
 ;; Haskell mode
 ;; (require 'init-haskell-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (irony cmake-font-lock cmake-mode neotree projectile auto-complete monokai-theme zenburn-theme color-theme-solarized ido-yes-or-no flx-ido))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

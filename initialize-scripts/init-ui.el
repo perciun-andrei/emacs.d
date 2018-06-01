@@ -35,12 +35,14 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Installing dependencies
-(package-install-ifnot 'ido-ubiquitous)
+(package-install-ifnot 'ido-completing-read+)
 (package-install-ifnot 'flx-ido)
+(package-install-ifnot 'ido-yes-or-no)
 
 ;; Enabling ido-mode
 (require 'ido)
-(require 'ido-ubiquitous)
+(require 'ido-completing-read+)
+(require 'ido-yes-or-no)
 (require 'flx-ido)
 
 (setq ido-enable-prefix nil
@@ -51,7 +53,9 @@
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1)
 (ido-mode +1)
-(ido-ubiquitous-mode +1)
+(ido-everywhere +1)
+(ido-ubiquitous-mode 1)
+(ido-yes-or-no-mode 1)
 
 ;; smarter fuzzy matching for ido
 (flx-ido-mode +1)
